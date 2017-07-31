@@ -79,6 +79,11 @@ class SingleList
       return this->head;
     }
 
+    Node<T>* end()
+    {
+      return this->tail;
+    }
+
     /**
     * @brief push_back
     * @param a
@@ -206,6 +211,12 @@ class SingleList
 
     }
 
+    /**
+     * @brief insert
+     * @param iterator
+     * @param n
+     * @param val
+     */
 
     void insert(Node<T>* iterator, int n, T val){
 
@@ -246,7 +257,11 @@ class SingleList
 
     }
 
-
+    /**
+     * @brief insert
+     * @param iterator
+     * @param val
+     */
     void insert(Node<T>* iterator, T val){
 
       Node<T>* it = begin();
@@ -282,7 +297,66 @@ class SingleList
 
     }
 
+    /**
+     * @brief erase
+     * @param it
+     * @return
+     */
 
+    Node<T>* erase(Node<T>* iterator){
+
+      Node<T>* it = begin();
+
+      Node<T>* tmp = it->next;
+
+      if(iterator == this->head){
+
+        delete head;
+        this->head = tmp;
+        this->size--;
+        return this->head;
+
+      }
+
+
+
+
+      while( it != nullptr){
+
+        if(it->next == iterator){
+          break;
+        }
+
+        it = it->next;
+      }
+
+      if(it != nullptr){
+
+          tmp = it->next->next;
+
+          if(tmp != nullptr){
+
+            delete it->next;
+            it->next = tmp;
+            this->size--;
+            return it;
+          }else{
+
+            this->tail = it;
+            delete it->next;
+            this->size--;
+            return it;
+          }
+
+
+
+
+        }else{
+        return nullptr;
+      }
+
+
+    }
 
 
 
