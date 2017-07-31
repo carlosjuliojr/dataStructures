@@ -1,6 +1,6 @@
 #ifndef SINGLELIST_H
 #define SINGLELIST_H
-
+#include <iostream>
 
 template<typename T>
 struct Node{
@@ -9,7 +9,7 @@ struct Node{
 
 
     Node(T a) : data(a), next(nullptr) {}
-    T getData(){ return data;}
+    T getData() const{ return data;}
 
 };
 
@@ -43,7 +43,7 @@ class SingleList
     * @brief front
     * @return
     */
-    T front()
+    T front() const
     {
       T a;
 
@@ -58,7 +58,7 @@ class SingleList
     * @brief back
     * @return
     */
-    T back()
+    T back() const
     {
 
       T a;
@@ -74,12 +74,12 @@ class SingleList
     * @brief begin
     * @return
     */
-    Node<T>* begin()
+    Node<T>* begin() const
     {
       return this->head;
     }
 
-    Node<T>* end()
+    Node<T>* end() const
     {
       return this->tail;
     }
@@ -88,7 +88,7 @@ class SingleList
     * @brief push_back
     * @param a
     */
-    void push_back(T a){
+    void push_back(const T a){
 
       Node<T>* newNode = new Node<T>(a);
 
@@ -113,7 +113,7 @@ class SingleList
     * @brief push_front
     * @param a
     */
-    void push_front(T a)
+    void push_front(const T a)
     {
 
       Node<T>* newNode = new Node<T>(a);
@@ -262,7 +262,7 @@ class SingleList
      * @param iterator
      * @param val
      */
-    void insert(Node<T>* iterator, T val){
+    void insert(const Node<T>* iterator, T val){
 
       Node<T>* it = begin();
 
@@ -351,7 +351,126 @@ class SingleList
 
     }
 
+    /**
+   * @brief remove
+   * @param val
+   */
+    void remove (const T& val){
 
+      Node<T>* it = begin();
+      Node<T>* tmp;
+      Node<T>* prev = it;
+
+
+      while (it != nullptr) {
+
+        if(it->data == val){
+          if(it == this->head){
+            prev=it;
+            tmp = it->next;
+
+            if (it->next != nullptr) {
+
+              delete it;
+              this->head = tmp;
+              this->size--;
+
+            }else{
+
+              delete it;
+              this->head = nullptr;
+              this->tail = nullptr;
+              this->size--;
+
+            }
+            it = tmp;
+
+
+          }else{
+
+            if(it->next != nullptr){
+
+              tmp = it->next;
+              delete it;
+              it = tmp;
+              prev->next=tmp;
+
+
+
+              this->size--;
+
+
+            }else{
+
+              tail = prev;
+              delete it;
+              tail->next=nullptr;
+              this->size--;
+              //                  it = prev;
+            }
+
+          }
+
+        }else{
+          prev = it;
+          it = it->next;
+        }
+
+      }
+
+      //      while (it != nullptr) {
+
+
+
+
+
+
+      //        if( it->data == val){
+
+      //          if(it == this->head){
+
+      //            if (it->next != nullptr) {
+      //              tmp = it->next;
+      //              delete it;
+      //              this->head = tmp;
+      //              this->size--;
+      //            }else{
+      //              delete it;
+      //              this->head = nullptr;
+      //              this->tail = nullptr;
+      //              this->size--;
+
+      //            }
+
+      //            it = it->next;
+      //          }
+
+
+      //          else if(it->next->data == val){
+
+      //              if(it->next->next != nullptr){
+
+      //                tmp = it->next->next;
+      //                delete it->next;
+      //                it->next = tmp;
+      //                this->size--;
+      //                it = it->next;
+
+      //              }else{
+
+      //                delete it->next;
+      //                tail = it;
+      //                this->size--;
+      //                it = it->next;
+      //              }
+
+      //            }else
+      //               it = it->next;
+
+      //        }else
+      //          it = it->next;
+      //      }
+    }
 
 };
 

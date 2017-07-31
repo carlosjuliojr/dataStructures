@@ -198,7 +198,7 @@ delete myList;
 }
 
 
-TEST(test8, test_erase)
+TEST(test9, test_erase)
 {
 
    SingleList<int>* myList = new SingleList<int>;
@@ -232,8 +232,6 @@ TEST(test8, test_erase)
       // ^
       ASSERT_EQ(itReturn->data,2);
 
-/**************************/
-
       it =myList->end();
 
       // 2  => 4 => null
@@ -250,6 +248,60 @@ TEST(test8, test_erase)
       // ^
 
       itReturn = myList->erase(itReturn);
+
+
+
+      delete myList;
+
+}
+
+TEST(test10, test_remove)
+{
+
+   SingleList<int>* myList = new SingleList<int>;
+
+      myList->push_front(4);
+      myList->push_front(3);
+      myList->push_front(3);
+      myList->push_front(1);
+
+      // 1  => 3  => 3  => 4 => null
+      // ^
+       myList->remove( 1 );
+       ASSERT_EQ(myList->begin()->data,3);
+
+        //  3  => 3  => 4 => null
+                     // ^
+       myList->remove( 4 );
+
+       ASSERT_EQ(myList->begin()->data,3);
+
+
+       //  3  => 3  => null
+        // ^     ^
+
+
+       myList->remove( 3 );
+
+       ASSERT_TRUE(myList->empty());
+
+
+
+
+
+       //  2  => 3  => 4 => null
+              // ^
+
+//       myList->remove( 3 );
+
+//      // 2  => 4 => null
+//       ASSERT_EQ(myList->begin()->next->data,4);
+
+
+
+
+
+
 
       delete myList;
 
