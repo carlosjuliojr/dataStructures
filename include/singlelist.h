@@ -233,24 +233,24 @@ class SingleList
 
       if(it != nullptr){
 
-          if(it->next == nullptr){
+        if(it->next == nullptr){
 
-              for (int var = 0; var < n; ++var) {
-              push_back(val);
-            }
+          for (int var = 0; var < n; ++var) {
+            push_back(val);
+          }
 
-          }else{
-            Node<T>* tmp = it->next;
+        }else{
+          Node<T>* tmp = it->next;
 
-            for (int var = 0; var < n; ++var) {
+          for (int var = 0; var < n; ++var) {
 
-              Node<T>* newNode = new Node<T>(val);
-              it->next = newNode;
-              newNode->next=tmp;
-              tmp = it->next;
-              this->size++;
+            Node<T>* newNode = new Node<T>(val);
+            it->next = newNode;
+            newNode->next=tmp;
+            tmp = it->next;
+            this->size++;
 
-            }
+          }
         }
 
       }
@@ -277,19 +277,19 @@ class SingleList
 
       if(it != nullptr){
 
-          if(it->next == nullptr){
+        if(it->next == nullptr){
 
-              push_back(val);
+          push_back(val);
 
-          }else{
-            Node<T>* tmp = it->next;
+        }else{
+          Node<T>* tmp = it->next;
 
 
-              Node<T>* newNode = new Node<T>(val);
-              it->next = newNode;
-              newNode->next=tmp;
-              tmp = it->next;
-              this->size++;
+          Node<T>* newNode = new Node<T>(val);
+          it->next = newNode;
+          newNode->next=tmp;
+          tmp = it->next;
+          this->size++;
 
         }
 
@@ -318,9 +318,6 @@ class SingleList
 
       }
 
-
-
-
       while( it != nullptr){
 
         if(it->next == iterator){
@@ -332,29 +329,25 @@ class SingleList
 
       if(it != nullptr){
 
-          tmp = it->next->next;
+        tmp = it->next->next;
 
-          if(tmp != nullptr){
+        if(tmp != nullptr){
 
-            delete it->next;
-            it->next = tmp;
-            this->size--;
-            return it;
-          }else{
-
-            this->tail = it;
-            delete it->next;
-            this->size--;
-            return it;
-          }
-
-
-
-
+          delete it->next;
+          it->next = tmp;
+          this->size--;
+          return it;
         }else{
+
+          this->tail = it;
+          delete it->next;
+          this->size--;
+          return it;
+        }
+
+      }else{
         return nullptr;
       }
-
 
     }
 
