@@ -132,7 +132,7 @@ TEST(test5, test_front)
 }
 
 
-TEST(test5, test_pop_front)
+TEST(test6, test_pop_front)
 {
 
   DoublyList<int>* myList = new DoublyList<int>;
@@ -167,6 +167,101 @@ TEST(test5, test_pop_front)
   delete myList;
 }
 
+
+
+TEST(test7, test_pop_back)
+{
+
+  DoublyList<int>* myList = new DoublyList<int>;
+
+  myList->push_back(4);
+  myList->push_back(3);
+
+
+  myList->pop_back();
+  ASSERT_EQ(myList->front(),4);
+
+
+  myList->push_back(1);
+
+
+  myList->push_back(3);
+
+
+  myList->pop_back();
+
+
+  ASSERT_EQ(myList->back(),1);
+
+  myList->pop_back();
+  myList->pop_back();
+
+  ASSERT_TRUE(myList->empty());
+
+
+  delete myList;
+}
+
+
+TEST(test9, test_erase)
+{
+
+   DoublyList<int>* myList = new DoublyList<int>;
+
+      myList->push_front(4);
+      myList->push_front(3);
+      myList->push_front(2);
+      myList->push_front(1);
+
+      // 1  => 2  => 3  => 4 => null
+
+      Node<int>* it = myList->begin();
+
+      // 1  => 2  => 3  => 4 => null
+      // ^
+      Node<int>* itReturn = myList->erase(it);
+
+      // 2  => 3  => 4 => null
+      // ^
+      ASSERT_EQ(itReturn->data,2);
+
+
+
+
+      itReturn = itReturn->next;
+
+      // 2  => 3  => 4 => null
+            // ^
+
+      itReturn = myList->erase(itReturn);
+
+      // 2  => 4 => null
+            // ^
+      ASSERT_EQ(itReturn->data,4);
+
+      it =myList->end();
+
+      // 2  => 4 => null
+            // ^
+
+      itReturn = myList->erase(it);
+
+      // 2  => null
+      // ^
+      ASSERT_EQ(itReturn->data,2);
+
+
+      // 2  => null
+      // ^
+
+      itReturn = myList->erase(itReturn);
+
+
+      ASSERT_TRUE(myList->empty());
+
+      delete myList;
+
+}
 
 
 

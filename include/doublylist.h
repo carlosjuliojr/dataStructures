@@ -183,6 +183,88 @@ class DoublyList
 
     }
 
+     /**
+      * @brief pop_back
+      */
+     void pop_back(){
+
+       if(this->size ==1){
+
+         delete this->head;
+         this->head= nullptr;
+         this->tail= nullptr;
+         this->size--;
+       }else if (this->size > 1){
+
+         Node<T>* tmp = this->tail->prev;
+         delete this->tail;
+         this->tail = tmp;
+         this->tail->next=nullptr;
+         this->size--;
+
+       }else
+
+         return;
+
+     }
+
+     /**
+      * @brief erase
+      * @param iterator
+      * @return
+      */
+
+     Node<T>* erase(Node<T>* iterator){
+
+       Node<T>* it = begin();
+
+       Node<T>* tmp = it->next;
+
+       if(iterator == this->head){
+
+         delete head;
+         this->head = tmp;
+         this->size--;
+         return this->head;
+
+       }
+
+       while( it != nullptr){
+
+         if(it == iterator){
+           break;
+         }
+
+         it = it->next;
+       }
+
+       if(it != nullptr){
+
+         tmp = it->next;
+         Node<T>* prev = it->prev;
+
+         if(tmp != nullptr){
+
+           delete it;
+           prev->next = tmp;
+           tmp->prev = prev;
+           this->size--;
+           return tmp;
+         }else{
+
+           this->tail = it->prev;
+           delete it;
+           this->tail->next = nullptr;
+           this->size--;
+           return tail;
+         }
+
+       }else{
+         return nullptr;
+       }
+
+     }
+
 };
 
 
