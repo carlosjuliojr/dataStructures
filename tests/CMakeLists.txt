@@ -6,3 +6,4 @@ find_package(Qt5Widgets PATHS "/home/julio/Qt/5.6/gcc_64/lib/cmake" REQUIRED)
 add_definitions(-std=c++11)
 
 add_subdirectory(singleList)
+add_subdirectory(doublyList)

@@ -28,6 +28,7 @@ set(VPA_Libs
      CMakeLists.txt
 
      ../include/singlelist.h
+     ../include/doublylist.h
 
      singlelist.cpp
 

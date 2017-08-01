@@ -35,7 +35,7 @@ class SingleList
       this->head=nullptr;
       this->tail=nullptr;
 
-    };
+    }
 
     SingleList(Node<T>*);
 
