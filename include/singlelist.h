@@ -410,66 +410,11 @@ class SingleList
             }
 
           }
-
         }else{
           prev = it;
           it = it->next;
         }
-
       }
-
-      //      while (it != nullptr) {
-
-
-
-
-
-
-      //        if( it->data == val){
-
-      //          if(it == this->head){
-
-      //            if (it->next != nullptr) {
-      //              tmp = it->next;
-      //              delete it;
-      //              this->head = tmp;
-      //              this->size--;
-      //            }else{
-      //              delete it;
-      //              this->head = nullptr;
-      //              this->tail = nullptr;
-      //              this->size--;
-
-      //            }
-
-      //            it = it->next;
-      //          }
-
-
-      //          else if(it->next->data == val){
-
-      //              if(it->next->next != nullptr){
-
-      //                tmp = it->next->next;
-      //                delete it->next;
-      //                it->next = tmp;
-      //                this->size--;
-      //                it = it->next;
-
-      //              }else{
-
-      //                delete it->next;
-      //                tail = it;
-      //                this->size--;
-      //                it = it->next;
-      //              }
-
-      //            }else
-      //               it = it->next;
-
-      //        }else
-      //          it = it->next;
-      //      }
     }
 
 };

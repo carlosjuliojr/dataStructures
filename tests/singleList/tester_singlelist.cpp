@@ -286,23 +286,6 @@ TEST(test10, test_remove)
        ASSERT_TRUE(myList->empty());
 
 
-
-
-
-       //  2  => 3  => 4 => null
-              // ^
-
-//       myList->remove( 3 );
-
-//      // 2  => 4 => null
-//       ASSERT_EQ(myList->begin()->next->data,4);
-
-
-
-
-
-
-
       delete myList;
 
 }
