@@ -29,6 +29,7 @@ set(VPA_Libs
 
      ../include/singlelist.h
      ../include/doublylist.h
+     ../include/stack.h
 
      singlelist.cpp
 

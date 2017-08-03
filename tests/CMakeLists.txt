@@ -7,3 +7,4 @@ add_definitions(-std=c++11)
 
 add_subdirectory(singleList)
 add_subdirectory(doublyList)
+add_subdirectory(stack)
