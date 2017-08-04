@@ -95,10 +95,60 @@ class Stack
       return this->top;
     }
 
+    /**
+     * @brief getSize
+     * @return
+     */
     int getSize() const
     {
     return this->size;
     }
+
+    /**
+     * @brief swap
+     * @param x
+     * @param y
+     */
+    void static swap(Stack<T>* x, Stack<T>* y){
+
+      Stack<T>* tmpX = new Stack<T>();
+//      Stack<T>* tmpY;
+
+      int  sizeX = x->getSize(), sizeY = y->getSize();
+
+      while(x->getSize() != 0){
+
+        tmpX->push(x->top_stack()->data);
+        x->pop();
+
+      }
+
+
+      while(y->getSize() != 0){
+
+        tmpX->push(y->top_stack()->data);
+        y->pop();
+
+      }
+
+      int z = 1 ;
+
+
+        while (z <= sizeX + sizeY){
+
+            if( z <= sizeY){
+
+              x->push(tmpX->top_stack()->data);
+            }else{
+              y->push(tmpX->top_stack()->data);
+            }
+
+            z++;
+
+        }
+        delete tmpX;
+    }
+
 };
 
 #endif // STACK_H

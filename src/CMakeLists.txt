@@ -30,6 +30,7 @@ set(VPA_Libs
      ../include/singlelist.h
      ../include/doublylist.h
      ../include/stack.h
+     ../include/queue.h
 
      singlelist.cpp
 
